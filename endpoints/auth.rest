@@ -1,15 +1,15 @@
 ### Get all semester 
-GET http://localhost:5000/user/3
-Content-Type: application/json
+# GET http://localhost:5000/
+# Content-Type: application/json
 
 
 ### create user
-POST   http://localhost:5000/register
+POST http://localhost:5000/register
 Content-Type: application/json
 
 {
-    "name":"Bappa1",
-    "email":"bappa1@gmail.com",
+    "name":"Bappa6",
+    "email":"bappa6@gmail.com",
     "password":"123456"
 }
 
