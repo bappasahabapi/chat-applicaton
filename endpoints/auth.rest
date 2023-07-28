@@ -1,0 +1,23 @@
+### Get all semester 
+GET http://localhost:5000/user/3
+Content-Type: application/json
+
+
+### create user
+POST   http://localhost:5000/register
+Content-Type: application/json
+
+{
+    "name":"Bappa1",
+    "email":"bappa1@gmail.com",
+    "password":"123456"
+}
+
+
+# ### update
+# PATCH    http://localhost:5000/
+# Content-Type: application/json
+
+# {
+    
+# }
