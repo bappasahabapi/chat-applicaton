@@ -4,7 +4,7 @@ const initialState={};
 
 
 const messagesSlice =createSlice({
-    name:"conversations",
+    name:"messages",
     initialState,
     reducers:{}
 })
