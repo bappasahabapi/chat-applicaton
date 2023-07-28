@@ -4,9 +4,9 @@ POST http://localhost:9000/register
 Content-Type: application/json
 
 {
-    "name":"Bappa6",
-    "email":"bappa6@gmail.com",
-    "password":"123456"
+    "name":"bappa",
+    "email":"bappa@gmail.com",
+    "password":"12345"
 }
 
 
