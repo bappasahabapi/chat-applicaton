@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logoImage from "../assets/images/lws-logo-light.svg";
+import blankImage from "../assets/images/lws-logo-light.svg";
 import Error from "../components/ui/Error";
 
 export default function Login() {
@@ -11,7 +12,7 @@ export default function Login() {
                         <Link to="/">
                             <img
                                 className="mx-auto h-12 w-auto"
-                                src={logoImage}
+                                src={blankImage}
                                 alt="Learn with sumit"
                             />
                         </Link>
