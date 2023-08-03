@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import logoImage from "../assets/images/lws-logo-light.svg";
 import blankImage from "../assets/images/blank.svg";
 import { useEffect, useState } from "react";
@@ -16,16 +16,24 @@ export default function Register() {
   const [register, { data, isLoading, error: responseError }] =
     useRegisterMutation();
 
-  // data post hbr por tar response dorte useEffect
+    const navigate =useNavigate();
+
+  // data post hbr por tar response k dorte  useEffect
   useEffect(() => {
     // console.log(data);
     // console.log(responseError);
-
+    //todo:handle error case
     if (responseError?.data) {
       setError(responseError.data);
     }
+    //todo: handle success case
     console.log(data);
-  }, [data, responseError]);
+    if(data?.accessToken && data?.user){
+      navigate('/inbox');
+    }
+
+
+  }, [data, responseError,navigate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,7 +42,7 @@ export default function Register() {
     setError("");
 
     if (password !== confirmPassword) {
-      setError("Passwords do not matched");
+      setError("Passwords do not match");
     } else {
       register({
         name,
