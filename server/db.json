@@ -5,8 +5,19 @@
       "password": "$2a$10$mCR4sFa/6kysFnNmxOE.sOpTpT9L6LViPK8Ze1hieW5l2bctWvC5u",
       "name": "bappa",
       "id": 1
+    },
+    {
+      "email": "bapi@gmail.com",
+      "password": "$2a$10$GLlFSy4PqhWULO3QOIYmo.5Tm/SFW123kprTgFP2GaKSCZPRvyRoW",
+      "name": "bapi",
+      "id": 2
+    },
+    {
+      "email": "test@gmail.com",
+      "password": "$2a$10$C65lbx1ROyMRWv.I3a.lVu0Ko.z.d3W9YQTfO8oK7jKtdaDXre4ES",
+      "name": "test",
+      "id": 3
     }
-
   ],
   "conversations": [
     {

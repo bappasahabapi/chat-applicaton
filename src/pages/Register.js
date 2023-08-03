@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-// import logoImage from "../assets/images/lws-logo-light.svg";
 import blankImage from "../assets/images/blank.svg";
 import { useEffect, useState } from "react";
 import { useRegisterMutation } from "../features/auth/authApi";
