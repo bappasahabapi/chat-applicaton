@@ -4,7 +4,8 @@
     "version": "1.0.0",
     "main": "server.js",
     "scripts": {
-        "start": "nodemon server.js"
+        "start": "nodemon server.js",
+        "dev": "nodemon server.js"
     },
     "keywords": [],
     "author": "Learn with Sumit",

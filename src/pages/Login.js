@@ -5,49 +5,39 @@ import { useLoginMutation } from "../features/auth/authApi";
 import Error from "../components/ui/Error";
 
 export default function Login() {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
 
+  const [login, { data, isLoading, error: responseError }] = useLoginMutation();
 
-  const [login, { data, isLoading, error: responseError }] =
-  useLoginMutation();
+  const navigate = useNavigate();
 
-  const navigate =useNavigate();
+  // data post hbr por tar response k dorte  useEffect
+  useEffect(() => {
+    // console.log(data);
+    // console.log(responseError);
+    //todo:handle error case
+    if (responseError?.data) {
+      setError(responseError.data);
+    }
+    //todo: handle success case
+    console.log(data);
+    if (data?.accessToken && data?.user) {
+      navigate("/inbox");
+    }
+  }, [data, responseError, navigate]);
 
-// data post hbr por tar response k dorte  useEffect
-useEffect(() => {
-  // console.log(data);
-  // console.log(responseError);
-  //todo:handle error case
-  if (responseError?.data) {
-    setError(responseError.data);
-  }
-  //todo: handle success case
-  console.log(data);
-  if(data?.accessToken && data?.user){
-    navigate('/inbox');
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-
-}, [data, responseError,navigate]);
-
-const handleSubmit = (e) => {
-  e.preventDefault();
-
-  //todo: set previous error clear
-  setError("");
-  login({
-    email,
-    password
-  })
-
-  
-};
-
-
-
+    //todo: set previous error clear
+    setError("");
+    login({
+      email,
+      password,
+    });
+  };
 
   return (
     <div className="grid place-items-center h-screen bg-[#F9FAFB">
@@ -55,18 +45,13 @@ const handleSubmit = (e) => {
         <div className="max-w-md w-full space-y-8">
           <div>
             <Link to="/">
-              <img
-                className="mx-auto h-12 w-auto"
-                src={blankImage}
-                alt=""
-              />
+              <img className="mx-auto h-12 w-auto" src={blankImage} alt="" />
             </Link>
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
               Sign in to your account
             </h2>
           </div>
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-           
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
                 <label htmlFor="email-address" className="sr-only">
@@ -123,7 +108,7 @@ const handleSubmit = (e) => {
               </button>
             </div>
 
-            {error !== '' && <Error message={error} />}
+            {error !== "" && <Error message={error} />}
           </form>
         </div>
       </div>

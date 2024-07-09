@@ -29,3 +29,17 @@
 
 ```
 
+Update package dependencies:
+
+1. Install npm-check-updates globally:
+
+-   ` npm install -g npm-check-updates`
+
+2. Run ncu to see which packages are outdated:
+
+-    `ncu`
+
+3. Run ncu -u to update the package.json file:
+
+-    ` ncu -u`
+-  `npm install`
