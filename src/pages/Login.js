@@ -50,6 +50,8 @@ export default function Login() {
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
               Sign in to your account
             </h2>
+            <small>email: <b>bappa@gmail.com</b> </small> <br />
+            <small>pass: <b>12345</b> </small>
           </div>
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div className="rounded-md shadow-sm -space-y-px">
