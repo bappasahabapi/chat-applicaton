@@ -9,7 +9,7 @@ function App() {
   const authChecked = useAuthCheck();
 
   return !authChecked ? (
-    <div>Checking Authentication ...</div>
+    <div className="text-center font-semibold text-3xl mt-52 ">Checking Authentication ...</div>
   ) : (
     <Router>
       <Routes>
