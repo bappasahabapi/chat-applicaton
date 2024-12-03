@@ -21,8 +21,9 @@ export default function Navigation() {
                     <Link to="/">
                         <img
                             className="h-10"
+                            // src="bappa"
                             src={logoImage}
-                            alt="Learn with Sumit"
+                            alt="Chatbox"
                         />
                     </Link>
                     <ul>

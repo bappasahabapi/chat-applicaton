@@ -3,40 +3,44 @@ import blankImage from "../assets/images/blank.svg";
 import { useEffect, useState } from "react";
 import { useLoginMutation } from "../features/auth/authApi";
 import Error from "../components/ui/Error";
+import InputField from "../components/ui/InputFiled";
 
 export default function Login() {
-  const [email, setEmail] = useState("bappa@gmail.com");
-  const [password, setPassword] = useState("12345");
+
+
+  const [credentials, setCredentials] = useState({
+    email: "bappa@gmail.com",
+    password: "12345",
+  });
   const [error, setError] = useState("");
 
   const [login, { data, isLoading, error: responseError }] = useLoginMutation();
-
   const navigate = useNavigate();
 
-  // data post hbr por tar response k dorte  useEffect
+  // Handle api response:  data post hbr por tar response k dorte  useEffect
   useEffect(() => {
-    // console.log(data);
-    // console.log(responseError);
-    //todo:handle error case
+
     if (responseError?.data) {
       setError(responseError.data);
     }
-    //todo: handle success case
-    console.log(data);
-    if (data?.accessToken && data?.user) {
+    else if (data?.accessToken && data?.user) {
       navigate("/inbox");
     }
   }, [data, responseError, navigate]);
 
+   // Handle form input changes
+  const handleInputChange =(e)=>{
+    const {name,value}=e.target;
+    setCredentials((pre)=>({
+      ...pre,
+      [name]:value
+    }))
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    //todo: set previous error clear
     setError("");
-    login({
-      email,
-      password,
-    });
+    login(credentials);
   };
 
   return (
@@ -54,39 +58,25 @@ export default function Login() {
             <small>pass: <b>12345</b> </small>
           </div>
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-            <div className="rounded-md shadow-sm -space-y-px">
-              <div>
-                <label htmlFor="email-address" className="sr-only">
-                  Email address
-                </label>
-                <input
-                  id="email-address"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-violet-500 focus:border-violet-500 focus:z-10 sm:text-sm"
-                  placeholder="Email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div>
-                <label htmlFor="password" className="sr-only">
-                  Password
-                </label>
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="current-password"
-                  required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-violet-500 focus:border-violet-500 focus:z-10 sm:text-sm"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
+            <div className="rounded-md shadow-sm space-y-4">
+              <InputField
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Enter your email address"
+                value={credentials.email}
+                onChange={handleInputChange}
+
+              />
+              <InputField
+                 id="password"
+                name="password"
+                type="password"
+                placeholder="Password"
+                value={credentials.password}
+                onChange={handleInputChange}
+
+              />
             </div>
 
             <div className="flex items-center justify-end">
