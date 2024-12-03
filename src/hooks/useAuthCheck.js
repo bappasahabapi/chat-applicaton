@@ -20,11 +20,11 @@ export default  function useAuthCheck() {
                 }))
             }
         }
-        setTimeout(() => {
+        // setTimeout(() => {
             
-            setAuthChecked(true);
-        }, 2000);
-        // setAuthChecked(true);
+        //     setAuthChecked(true);
+        // }, 2000);
+        setAuthChecked(true);
 
     },[dispatch,setAuthChecked]);
 

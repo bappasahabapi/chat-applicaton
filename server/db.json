@@ -17,6 +17,12 @@
       "password": "$2a$10$C65lbx1ROyMRWv.I3a.lVu0Ko.z.d3W9YQTfO8oK7jKtdaDXre4ES",
       "name": "test",
       "id": 3
+    },
+    {
+      "email": "bappasaha161@gmail.com",
+      "password": "$2a$10$rnA8eJFxc6ZsU3Bb.FMrBuFUCjFWh40w5sJX/EKr59h16tBC/UMc.",
+      "name": "bappasaha",
+      "id": 4
     }
   ],
   "conversations": [
