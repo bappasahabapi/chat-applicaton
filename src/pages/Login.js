@@ -5,8 +5,8 @@ import { useLoginMutation } from "../features/auth/authApi";
 import Error from "../components/ui/Error";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("bappa@gmail.com");
+  const [password, setPassword] = useState("12345");
   const [error, setError] = useState("");
 
   const [login, { data, isLoading, error: responseError }] = useLoginMutation();
