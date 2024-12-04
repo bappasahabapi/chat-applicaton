@@ -28,16 +28,16 @@
   "conversations": [
     {
       "id": 1,
-      "participants": "sumit@learnwithsumit.com-akash@learnwithsumit.com",
+      "participants": "bappa@gmail.com-bapi@gmail.com",
       "users": [
         {
-          "email": "sumit@learnwithsumit.com",
-          "name": "Sumit Saha",
+          "email": "bappa@gmail.com",
+          "name": "Bappa Saha",
           "id": 1
         },
         {
-          "email": "akash@learnwithsumit.com",
-          "name": "Akash Ahmed",
+          "email": "bapi@gmail.com",
+          "name": "Bapi Ahmed",
           "id": 2
         }
       ],
