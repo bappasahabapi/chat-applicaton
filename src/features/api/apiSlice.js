@@ -10,7 +10,7 @@ export const apiSlice = createApi({
             headers.set("Authorization", `Bearer ${token}`);
         }
 
-        return token;
+        return headers;
     }
   }),
   tagTypes: [],

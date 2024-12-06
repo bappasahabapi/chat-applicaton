@@ -72,3 +72,9 @@ export const {useGetConversatonsQuery}=conversationsApi;
 
 ```
 </details>
+
+<details>
+<summary>11`- Make the conversationalApi fucntional </summary> 
+
+- First call the useGetConversatonsQuery hook to the chatItem componet and console.log data
+</details>
