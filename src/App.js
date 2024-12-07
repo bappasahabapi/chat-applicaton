@@ -36,6 +36,15 @@ function App() {
             </PublicRoute>
           }
         />
+        <Route
+          path="/inbox/:id"
+          
+          element={
+            <PrivateRoute>
+              <Inbox />
+            </PrivateRoute>
+          }
+        />
 
         <Route
           path="/inbox"
@@ -45,14 +54,7 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route
-          path="/inbox/:id"
-          element={
-            <PrivateRoute>
-              <Inbox />
-            </PrivateRoute>
-          }
-        />
+        
       </Routes>
     </Router>
   );

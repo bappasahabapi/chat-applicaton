@@ -10,7 +10,7 @@ export default function Login() {
 
   const [credentials, setCredentials] = useState({
     email: "bappa@gmail.com",
-    password: "12345",
+    password: "123456",
   });
   const [error, setError] = useState("");
 

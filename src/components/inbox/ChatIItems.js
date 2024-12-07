@@ -1,26 +1,28 @@
 import { useSelector } from "react-redux";
 import ChatItem from "./ChatItem";
 import { Link } from "react-router-dom";
-
-
+import moment from "moment/moment";
 import Error from "../ui/Error";
 import { useGetConversationsQuery } from "../../features/conversations/conversationsApi";
+import getPartnerInfo from "../../utils/getPartnerInfo";
+import gravatarUrl from "gravatar-url";
 
 export default function ChatItems() {
 
     const { user } = useSelector((state) => state.auth) || {};
     const { email } = user || {};
-    console.log(email)
+    // console.log(email)
     const {
         data: conversations,
         isLoading,
         isError,
         error,
-    } = useGetConversationsQuery(email,{refetchOnMount:true})
+    } = useGetConversationsQuery(email)
     console.log(conversations)
 
+
    
-    //what to render
+    //todo:what to render
     let content =null;
     if (isLoading) {
         content = <li className="m-2 text-center">Loading...</li>;
@@ -33,53 +35,42 @@ export default function ChatItems() {
     } else if (!isLoading && !isError && conversations?.length === 0) {
         content = <li className="m-2 text-center">No conversations found!</li>;
     }
+    else if (!isLoading && !isError && conversations?.length > 0) {
+        content = conversations.map((conversation) => {
+            const { id, message, timestamp } = conversation;
+            const { email } = user || {};
+            const { name,email:partnerEmail } = getPartnerInfo(
+                conversation.users,
+                email
+            );
+
+            console.log(id)
+            console.log(`Navigating to /inbox/${id}`);
 
 
-    content = conversations?.map((conversation) => {
-       
-       
-
-        return (
-            <li key={conversation.id}>
-                <Link to={`/inbox/${conversation.id}`}>
-                <ChatItem
-                    avatar="https://cdn.pixabay.com/photo/2018/09/12/12/14/man-3672010__340.jpg"
-                    name="Saad Hasan"
-                    lastMessage="bye"
-                    lastTime="25 minutes"
-                />
-                </Link>
-            </li>
-        );
-    });
+            return (
+                
+                <li key={id}>
+                    <Link to={`/inbox/${id}`}>
+                    
+                        <ChatItem
+                            avatar={gravatarUrl(partnerEmail, {
+                                size: 80,
+                            })}
+                            // avatar="https://cdn.pixabay.com/photo/2018/09/12/12/14/man-3672010__340.jpg"
+                            name={name}
+                            lastMessage={message}
+                            lastTime={moment(timestamp).fromNow()}
+                        />
+                    </Link>
+                </li>
+            );
+        });
+    }
+        
+    // finally return which conversation will render
     return <ul>{content}</ul>;
-    // return <ul>ol</ul>;
+    
 }
 
 
-
-    // return (
-    //     <ul>
-    //         <li>
-                // <ChatItem
-                //     avatar="https://cdn.pixabay.com/photo/2018/09/12/12/14/man-3672010__340.jpg"
-                //     name="Saad Hasan"
-                //     lastMessage="bye"
-                //     lastTime="25 minutes"
-                // />
-    //             <ChatItem
-    //                 avatar="https://cdn.pixabay.com/photo/2018/09/12/12/14/man-3672010__340.jpg"
-    //                 name="Sumit Saha"
-    //                 lastMessage="will talk to you later"
-    //                 lastTime="10 minutes"
-    //             />
-    //             <ChatItem
-    //                 avatar="https://cdn.pixabay.com/photo/2018/09/12/12/14/man-3672010__340.jpg"
-    //                 name="Mehedi Hasan"
-    //                 lastMessage="thanks for your support"
-    //                 lastTime="15 minutes"
-    //             />
-    //         </li>
-    //     </ul>
-    // );
-// }
